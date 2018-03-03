@@ -1,0 +1,27 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1561\cocoasubrtf200
+{\fonttbl\f0\froman\fcharset0 Times-Roman;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\ri0\qj\partightenfactor0
+
+\f0\fs24 \cf0 Danger log for Hw2\
+\
+By Xiaoyu Li  & Siyue Zhou\
+\
+\pard\pardeftab720\ri0\sl480\slmult1\qj\partightenfactor0
+\cf0 1. Our http proxy does not have a protective system to prevent user from access some danger website. If our proxy has a list of websites which should be filtered. The safety of our proxy will be improved. On the other hand, if a user posts some illegal data to web server, we cannot check it either, which is also very dangerous to web server.\
+\
+2. Our proxy cache uses clear text to store the data of http responses. If someone hacks into our database. All the data, for example user\'92s IP address or hostname, are exposed and are easy to modify or attack. In this case, we should notice users to access websites using HTTPS instead of HTTP. Moreover, the identification should be accomplished if someone wants to access the cache. The same trouble happens on our log file too. And even worse, we create a new log file under the system directory with command \'93sudo\'94. It is not a good idea to get permission by running this.\
+\
+3. The exception of our http proxy is not very good. When receive a request with a large number of http request, the function of parser will throw an exception. The reason is that it exceeds the maximum value of our received buff of client. Also, when receiving http request, if the client close the communication, which means we will receive zero when we call \uc0\u8232 \'93recv()\'94. Then our data buff will put this empty vector to parser vector. We now just terminate the thread but we are not sure it is a proper method.\
+\
+4. When we are opening more than three web pages in Mozilla browser or access some website with a chunk of data, for example BBC News. We cannot open it. The reason is that threads use a lot of space for analyzing IP address or connect to the web server. One way to improve this flaw is to use thread pool to limit the active thread.\
+\
+5. The robust of function parser is not completed. There a variety of forms of HTTP requests and response, but our http proxy can only analyze a few types, which leads to analyze a legal host name or URL as illegal. \
+\
+6. The http proxy work in a while loop with a daemon process but we do not find a better way exit program elegantly. The users who uses our proxy just type a port and then begin to use. However, it is difficult to find if it is running in background, which will occupy a lot of memory or system resources.\
+\
+7. We do not finish the CONNECT type yet. So, some website using HTTP to transmit some data cannot be open. Also like BBC News, which send chunk of data in fix size cannot be open unless the user refresh browser many times.\
+}
