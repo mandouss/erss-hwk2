@@ -1,5 +1,4 @@
-Definition:
- From, wikioedia.web cache (or HTTP cache) is an information technology for the temporary storage (caching) of web documents, such as HTML pages and images,  web cache (or HTTP cache) is an information technology for the temporary storage (caching) of web documents, such as HTML pages and images, web cache (or HTTP cache) is an information technology for the temporary storage (caching) of web documents, such as HTML pages and images, web cache (or HTTP cache) is an information technology for the temporary storage (caching) of web documents, such as HTML pages and images, to reduce server lag.
+A web cache (or HTTP cache) is an information technology for the temporary storage (caching) of web documents, such as HTML pages and images, to reduce server lag. 
  
  
  he project includes the following files:
